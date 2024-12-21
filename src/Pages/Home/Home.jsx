@@ -1,9 +1,12 @@
 import React from "react";
+import Banner from "./Banner";
 
 function Home() {
   return (
     <div>
-      <h1>i am the home banner </h1>
+      <section>
+        <Banner />
+      </section>
     </div>
   );
 }
