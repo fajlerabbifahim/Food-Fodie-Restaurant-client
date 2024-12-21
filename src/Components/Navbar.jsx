@@ -1,5 +1,6 @@
 import React from "react";
 import { Link, NavLink } from "react-router-dom";
+import useAuth from "../Hooks/useAuth";
 
 function Navbar() {
   const links = (
@@ -59,8 +60,17 @@ function Navbar() {
           <ul className="menu menu-horizontal px-1">{links}</ul>
         </div>
         <div className="navbar-end">
-          <Link className="bg-[#FF5722] text-white hover:bg-[#E64A19] px-6 py-2 rounded-sm shadow-md font-semibold">
+          <Link
+            to="/login"
+            className="bg-[#FF5722] text-white hover:bg-[#E64A19] px-6 py-2 rounded-sm shadow-md font-semibold"
+          >
             Login
+          </Link>
+          <Link
+            to="/register"
+            className="bg-[#FF5722] text-white hover:bg-[#E64A19] px-6 py-2 rounded-sm shadow-md font-semibold"
+          >
+            Register
           </Link>
         </div>
       </div>
