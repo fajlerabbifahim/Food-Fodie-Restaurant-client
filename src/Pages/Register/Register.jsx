@@ -10,7 +10,7 @@ import { GoogleAuthProvider } from "firebase/auth";
 import Swal from "sweetalert2";
 
 function Register() {
-  const { registerUser, setUser, signinWithGoogle } = useAuth();
+  const { registerUser, setUser, signinWithGoogle, updateUser } = useAuth();
   const navigate = useNavigate();
   const googleProvider = new GoogleAuthProvider();
   const handleRegister = (e) => {
@@ -20,12 +20,22 @@ function Register() {
     const photo = form.photo.value;
     const email = form.email.value;
     const password = form.password.value;
-    console.log(name, photo, email, password);
+
+    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
+    if (!passwordRegex.test(password)) {
+      Swal.fire({
+        icon: "error",
+        title:
+          "Password must have an uppercase, a lowercase, and at least 6 characters.",
+        showConfirmButton: true,
+      });
+      return;
+    }
 
     registerUser(email, password)
       .then((result) => {
-        console.log(result);
         setUser(result?.user);
+        updateUser({ displayName: name, photoURL: photo }).then(() => {});
 
         Swal.fire({
           icon: "success",

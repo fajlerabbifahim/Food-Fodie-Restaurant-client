@@ -1,5 +1,6 @@
 import React from "react";
 import Banner from "./Banner";
+import TopSellingFoods from "./TopSellingFoods";
 
 function Home() {
   return (
@@ -7,6 +8,10 @@ function Home() {
       <section>
         <Banner />
       </section>
+      <main>
+        {/* top selling foods */}
+        <TopSellingFoods />
+      </main>
     </div>
   );
 }

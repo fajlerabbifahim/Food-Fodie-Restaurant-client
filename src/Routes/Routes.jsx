@@ -14,8 +14,17 @@ const Route = createBrowserRouter([
       {
         path: "/",
         element: <Home />,
+        loader: () => fetch("http://localhost:5000/topSellingFood"),
       },
     ],
+  },
+  {
+    path: "/allFoods",
+    element: <h1>i am the all food</h1>,
+  },
+  {
+    path: "/gallery",
+    element: <h1>i am the gallery</h1>,
   },
   {
     path: "/login",

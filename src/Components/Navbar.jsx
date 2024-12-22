@@ -19,12 +19,36 @@ function Navbar() {
           Home
         </NavLink>
       </li>
+      <li>
+        <NavLink
+          to="/allFoods"
+          className={({ isActive }) =>
+            isActive
+              ? "text-white bg-blue-500 px-3 py-2 rounded-md font-semibold"
+              : "px-3 py-2 text-gray-600 font-medium hover:text-blue-500"
+          }
+        >
+          All Foods
+        </NavLink>
+      </li>
+      <li>
+        <NavLink
+          to="/gallery"
+          className={({ isActive }) =>
+            isActive
+              ? "text-white bg-blue-500 px-3 py-2 rounded-md font-semibold"
+              : "px-3 py-2 text-gray-600 font-medium hover:text-blue-500"
+          }
+        >
+          Gallery
+        </NavLink>
+      </li>
     </>
   );
 
   return (
     <div>
-      <div className="navbar bg-base-100">
+      <div className="navbar bg-base-100 ">
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -61,7 +85,42 @@ function Navbar() {
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">{links}</ul>
         </div>
+
         <div className="navbar-end">
+          {/* user avatar part  */}
+
+          <div className="dropdown dropdown-end mr-4">
+            <div
+              tabIndex={0}
+              role="button"
+              className="btn btn-ghost btn-circle avatar"
+              aria-label="User menu"
+            >
+              <div className="w-10 rounded-full">
+                <img alt="User Avatar" src={user?.photoURL} />
+              </div>
+            </div>
+            <ul
+              tabIndex={0}
+              className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
+            >
+              <li>
+                <a className="justify-between">
+                  Profile
+                  <span className="badge">New</span>
+                </a>
+              </li>
+              <li>
+                <a>Settings</a>
+              </li>
+              <li>
+                <a onClick={() => console.log("Logout clicked!")}>Logout</a>
+              </li>
+            </ul>
+          </div>
+
+          {/* ********user******** */}
+
           {user?.email ? (
             <>
               <Link

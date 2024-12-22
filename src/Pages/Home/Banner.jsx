@@ -18,7 +18,7 @@ function Banner() {
             pure joy.
           </p>
           <button className="bg-[#FF5722] text-white hover:bg-[#E64A19] px-6 py-2 rounded-sm shadow-md font-semibold">
-            Order Now
+            All Foods
           </button>
         </div>
       </div>
