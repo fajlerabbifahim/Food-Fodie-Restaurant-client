@@ -1,6 +1,9 @@
 import React, { createContext, useState } from "react";
 import auth from "../firebase/firebase.confiq";
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+} from "firebase/auth";
 
 export const AuthContext = createContext(null);
 function AuthProvider({ children }) {
@@ -14,9 +17,16 @@ function AuthProvider({ children }) {
     return createUserWithEmailAndPassword(auth, email, password);
   };
 
+  // ******Login a user ******
+
+  const login = (email, password) => {
+    setLoading(true);
+    return signInWithEmailAndPassword(auth, email, password);
+  };
+
   const authInfo = {
-    name: "fahim",
     registerUser,
+    login,
   };
 
   return (
