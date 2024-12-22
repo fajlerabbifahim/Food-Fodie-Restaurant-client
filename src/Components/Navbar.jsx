@@ -3,6 +3,8 @@ import { Link, NavLink } from "react-router-dom";
 import useAuth from "../Hooks/useAuth";
 
 function Navbar() {
+  const { user, logOut } = useAuth();
+
   const links = (
     <>
       <li>
@@ -60,18 +62,26 @@ function Navbar() {
           <ul className="menu menu-horizontal px-1">{links}</ul>
         </div>
         <div className="navbar-end">
-          <Link
-            to="/login"
-            className="bg-[#FF5722] text-white hover:bg-[#E64A19] px-6 py-2 rounded-sm shadow-md font-semibold"
-          >
-            Login
-          </Link>
-          <Link
-            to="/register"
-            className="bg-[#FF5722] text-white hover:bg-[#E64A19] px-6 py-2 rounded-sm shadow-md font-semibold"
-          >
-            Register
-          </Link>
+          {user?.email ? (
+            <>
+              <Link
+                onClick={logOut}
+                to="/login"
+                className="bg-[#FF5722] text-white hover:bg-[#E64A19] px-6 py-2 rounded-sm shadow-md font-semibold"
+              >
+                Sign Out
+              </Link>
+            </>
+          ) : (
+            <>
+              <Link
+                to="/login"
+                className="bg-[#FF5722] text-white hover:bg-[#E64A19] px-6 py-2 rounded-sm shadow-md font-semibold"
+              >
+                Login
+              </Link>
+            </>
+          )}
         </div>
       </div>
     </div>
