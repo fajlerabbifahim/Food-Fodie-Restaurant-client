@@ -2,12 +2,17 @@ import React from "react";
 import useAuth from "../../Hooks/useAuth";
 import Lottie from "lottie-react";
 import registerLottieData from "../../assets/Lottie-Files/register.json";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Navbar from "../../Components/Navbar";
 import Footer from "../../Components/Footer";
+import { FcGoogle } from "react-icons/fc";
+import { GoogleAuthProvider } from "firebase/auth";
+import Swal from "sweetalert2";
 
 function Register() {
-  const { registerUser } = useAuth();
+  const { registerUser, setUser, signinWithGoogle } = useAuth();
+  const navigate = useNavigate();
+  const googleProvider = new GoogleAuthProvider();
   const handleRegister = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -19,10 +24,48 @@ function Register() {
 
     registerUser(email, password)
       .then((result) => {
-        console.log(result.user);
+        console.log(result);
+        setUser(result?.user);
+
+        Swal.fire({
+          icon: "success",
+          title: "Login Successful",
+          showConfirmButton: false,
+          timer: 1000,
+        });
+        navigate("/");
       })
       .catch((e) => {
-        console.log(e.message);
+        console.error("Google Sign-In Error:", e.message);
+        Swal.fire({
+          icon: "error",
+          title: "Invalid Credential",
+          showConfirmButton: false,
+          timer: 1000,
+        });
+      });
+  };
+  // sign in with google
+  const handleGoogleSignin = () => {
+    signinWithGoogle(googleProvider)
+      .then((result) => {
+        setUser(result?.user);
+
+        Swal.fire({
+          icon: "success",
+          title: "Login Successful",
+          showConfirmButton: false,
+          timer: 1000,
+        });
+        navigate("/");
+      })
+      .catch((e) => {
+        Swal.fire({
+          icon: "error",
+          title: "Invalid Credential",
+          showConfirmButton: false,
+          timer: 1000,
+        });
       });
   };
   return (
@@ -119,6 +162,16 @@ function Register() {
                     <div className="w-full px-3">
                       <button className="block w-full max-w-xs mx-auto bg-[#FF5722] hover:bg-[#E64A19]  text-white rounded-sm px-3 py-3 font-semibold">
                         REGISTER NOW
+                      </button>
+
+                      <button
+                        onClick={handleGoogleSignin}
+                        className="flex items-center mx-auto my-2 justify-center gap-2 bg-white border border-gray-300 rounded-sm px-4 py-2 shadow hover:shadow-lg transition"
+                      >
+                        <FcGoogle size={24} />
+                        <span className="text-gray-700 font-medium">
+                          Sign in with Google
+                        </span>
                       </button>
                       <p className="text-center mt-2">
                         Already Have An Account{" "}

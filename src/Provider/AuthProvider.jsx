@@ -4,6 +4,7 @@ import {
   createUserWithEmailAndPassword,
   onAuthStateChanged,
   signInWithEmailAndPassword,
+  signInWithPopup,
   signOut,
 } from "firebase/auth";
 
@@ -33,6 +34,13 @@ function AuthProvider({ children }) {
     return signOut(auth);
   };
 
+  // ********* sign in with google *********
+
+  const signinWithGoogle = (googleProvider) => {
+    setLoading(true);
+    return signInWithPopup(auth, googleProvider);
+  };
+
   // observer
 
   useEffect(() => {
@@ -49,6 +57,8 @@ function AuthProvider({ children }) {
     registerUser,
     login,
     logOut,
+    signinWithGoogle,
+    setUser,
     user,
     loading,
   };

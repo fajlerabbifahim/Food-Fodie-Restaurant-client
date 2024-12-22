@@ -1,21 +1,70 @@
 import Lottie from "lottie-react";
 import React from "react";
 import registerLottieData from "../../assets/Lottie-Files/register.json";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import useAuth from "../../Hooks/useAuth";
 import Navbar from "../../Components/Navbar";
 import Footer from "../../Components/Footer";
+import Swal from "sweetalert2";
+import { GoogleAuthProvider } from "firebase/auth";
+import { FcGoogle } from "react-icons/fc";
 
 function LoginPage() {
-  const { login } = useAuth();
+  const { login, signinWithGoogle, setUser } = useAuth();
+  const googleProvider = new GoogleAuthProvider();
+  const navigate = useNavigate();
   const handleLogin = (e) => {
     e.preventDefault();
     const form = e.target;
     const email = form.email.value;
     const password = form.password.value;
     login(email, password)
-      .then((res) => console.log(res.user))
-      .catch((e) => console.log(e.message));
+      .then((result) => {
+        setUser(result?.user);
+
+        Swal.fire({
+          icon: "success",
+          title: "Login Successful",
+          showConfirmButton: false,
+          timer: 1000,
+        });
+        navigate("/");
+      })
+      .catch((e) => {
+        console.error(e.message);
+
+        Swal.fire({
+          icon: "error",
+          title: "Invalid Credential",
+          showConfirmButton: false,
+          timer: 1000,
+        });
+      });
+  };
+
+  // sign in with google
+  const handleGoogleSignin = () => {
+    signinWithGoogle(googleProvider)
+      .then((result) => {
+        setUser(result?.user);
+
+        Swal.fire({
+          icon: "success",
+          title: "Login Successful",
+          showConfirmButton: false,
+          timer: 1000,
+        });
+        navigate("/");
+      })
+      .catch((e) => {
+        console.log(e.message);
+        Swal.fire({
+          icon: "error",
+          title: "Invalid Credential",
+          showConfirmButton: false,
+          timer: 1000,
+        });
+      });
   };
 
   return (
@@ -77,9 +126,19 @@ function LoginPage() {
                     </div>
                   </div>
                   <div className="flex -mx-3">
-                    <div className="w-full px-3">
+                    <div className="w-full px-3 mt-2">
                       <button className="block w-full max-w-xs mx-auto bg-[#FF5722] hover:bg-[#E64A19]  text-white rounded-sm px-3 py-3 font-semibold">
                         Login
+                      </button>
+
+                      <button
+                        onClick={handleGoogleSignin}
+                        className="flex items-center mx-auto my-2 justify-center gap-2 bg-white border border-gray-300 rounded-sm px-4 py-2 shadow hover:shadow-lg transition"
+                      >
+                        <FcGoogle size={24} />
+                        <span className="text-gray-700 font-medium">
+                          Sign in with Google
+                        </span>
                       </button>
                       <p className="text-center mt-2">
                         Don't Have An Account{" "}
