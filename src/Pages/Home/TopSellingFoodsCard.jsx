@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 function TopSellingFoodsCard({ food }) {
   return (
@@ -36,9 +37,11 @@ function TopSellingFoodsCard({ food }) {
 
         {/* Details Button */}
         <div className="bg-orange-50 py-4 px-4">
-          <button className="bg-[#FF5722] hover:bg-[#E64A19] text-white font-medium py-2 px-4 w-full rounded-sm transition duration-300">
-            View Details
-          </button>
+          <Link to={`/singleFood/${food._id}`}>
+            <button className="bg-[#FF5722] hover:bg-[#E64A19] text-white font-medium py-2 px-4 w-full rounded-sm transition duration-300">
+              View Details
+            </button>
+          </Link>
         </div>
       </div>
     </div>
