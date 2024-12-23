@@ -1,5 +1,5 @@
 import React from "react";
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import TopSellingFoodsCard from "./TopSellingFoodsCard";
 
 function TopSellingFoods() {
@@ -27,7 +27,7 @@ function TopSellingFoods() {
         {/* View All Foods Button */}
         <div className="text-center mt-10">
           <button className="bg-[#FF5722] hover:bg-[#E64A19] text-white px-6 py-2 rounded-sm shadow-md font-semibold">
-            View All Foods
+            <Link to="/allFoods">View All Foods</Link>
           </button>
         </div>
       </div>

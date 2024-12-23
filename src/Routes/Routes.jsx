@@ -5,6 +5,7 @@ import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 import LoginPage from "../Pages/Login/LoginPage";
 import Register from "../Pages/Register/Register";
 import SingleFoodPage from "../Pages/SingleFoodPage/SingleFoodPage";
+import AllFoods from "../Pages/AllFoodPage/AllFoods";
 
 const Route = createBrowserRouter([
   {
@@ -21,7 +22,8 @@ const Route = createBrowserRouter([
   },
   {
     path: "/allFoods",
-    element: <h1>i am the all food</h1>,
+    element: <AllFoods />,
+    loader: () => fetch("http://localhost:5000/allFoods"),
   },
   {
     path: "/gallery",

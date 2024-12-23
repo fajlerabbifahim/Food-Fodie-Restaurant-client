@@ -1,5 +1,6 @@
 import React from "react";
 import bannerBurgerImage from "../../assets/banner-burger-image.jpg";
+import { Link } from "react-router-dom";
 function Banner() {
   return (
     <div>
@@ -18,7 +19,7 @@ function Banner() {
             pure joy.
           </p>
           <button className="bg-[#FF5722] text-white hover:bg-[#E64A19] px-6 py-2 rounded-sm shadow-md font-semibold">
-            All Foods
+            <Link to="/allFoods">All Foods</Link>
           </button>
         </div>
       </div>
