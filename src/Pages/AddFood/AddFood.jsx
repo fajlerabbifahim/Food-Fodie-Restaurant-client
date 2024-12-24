@@ -8,8 +8,8 @@ import Swal from "sweetalert2";
 function AddFood() {
   const { user } = useAuth();
   const addedBy = {
-    name: user.displayName,
-    email: user.email,
+    name: user?.displayName,
+    email: user?.email,
   };
   console.log(addedBy);
 

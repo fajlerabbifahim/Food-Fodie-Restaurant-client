@@ -12,8 +12,8 @@ function Navbar() {
           to="/"
           className={({ isActive }) =>
             isActive
-              ? "text-white bg-blue-500 px-3 py-2 rounded-md font-semibold"
-              : "px-3 py-2 text-gray-600 font-medium hover:text-blue-500"
+              ? "text-white bg-[#FF5722] px-3 py-2 rounded-md font-semibold"
+              : "px-3 py-2 text-gray-600 font-medium hover:text-[#E64A19]"
           }
         >
           Home
@@ -24,8 +24,8 @@ function Navbar() {
           to="/allFoods"
           className={({ isActive }) =>
             isActive
-              ? "text-white bg-blue-500 px-3 py-2 rounded-md font-semibold"
-              : "px-3 py-2 text-gray-600 font-medium hover:text-blue-500"
+              ? "text-white bg-[#FF5722] px-3 py-2 rounded-md font-semibold"
+              : "px-3 py-2 text-gray-600 font-medium hover:text-[#E64A19]"
           }
         >
           All Foods
@@ -36,8 +36,8 @@ function Navbar() {
           to="/gallery"
           className={({ isActive }) =>
             isActive
-              ? "text-white bg-blue-500 px-3 py-2 rounded-md font-semibold"
-              : "px-3 py-2 text-gray-600 font-medium hover:text-blue-500"
+              ? "text-white bg-[#FF5722] px-3 py-2 rounded-md font-semibold"
+              : "px-3 py-2 text-gray-600 font-medium hover:text-[#E64A19]"
           }
         >
           Gallery
@@ -48,11 +48,23 @@ function Navbar() {
           to="/addFood"
           className={({ isActive }) =>
             isActive
-              ? "text-white bg-blue-500 px-3 py-2 rounded-md font-semibold"
-              : "px-3 py-2 text-gray-600 font-medium hover:text-blue-500"
+              ? "text-white bg-[#FF5722] px-3 py-2 rounded-md font-semibold"
+              : "px-3 py-2 text-gray-600 font-medium hover:text-[#E64A19]"
           }
         >
           Add Food
+        </NavLink>
+      </li>
+      <li>
+        <NavLink
+          to="/myorders"
+          className={({ isActive }) =>
+            isActive
+              ? "text-white bg-[#FF5722] px-3 py-2 rounded-md font-semibold"
+              : "px-3 py-2 text-gray-600 font-medium hover:text-[#E64A19]"
+          }
+        >
+          My Orders
         </NavLink>
       </li>
     </>
@@ -120,10 +132,10 @@ function Navbar() {
                 <Link>My Food</Link>
               </li>
               <li>
-                <Link>Add Food</Link>
+                <Link to="/addFood">Add Food</Link>
               </li>
               <li>
-                <Link>My Orders</Link>
+                <Link to="/myorders">My Orders</Link>
               </li>
             </ul>
           </div>

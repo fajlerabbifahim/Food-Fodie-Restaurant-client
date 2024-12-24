@@ -56,7 +56,12 @@ function PurchasePage() {
     const formData = new FormData(e.target);
     const initialData = Object.fromEntries(formData.entries());
 
-    const purchaseData = { ...initialData, selectedQuantity };
+    const purchaseData = {
+      ...initialData,
+      selectedQuantity,
+      currentDate,
+      image,
+    };
     console.log(purchaseData);
 
     axios

@@ -9,6 +9,7 @@ import AllFoods from "../Pages/AllFoodPage/AllFoods";
 import PurchasePage from "../Pages/PurchasePage/PurchasePage";
 import GalleryPage from "../Pages/MyGallery/GalleryPage";
 import AddFood from "../Pages/AddFood/AddFood";
+import MyOders from "../Pages/MyOder/MyOders";
 
 const Route = createBrowserRouter([
   {
@@ -35,6 +36,11 @@ const Route = createBrowserRouter([
   {
     path: "/addFood",
     element: <AddFood />,
+  },
+  {
+    path: "/myorders",
+    element: <MyOders />,
+    loader: () => fetch("http://localhost:5000/myOrders"),
   },
   {
     path: "/singleFood/:id",
