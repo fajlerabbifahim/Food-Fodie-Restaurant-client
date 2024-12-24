@@ -6,6 +6,7 @@ import LoginPage from "../Pages/Login/LoginPage";
 import Register from "../Pages/Register/Register";
 import SingleFoodPage from "../Pages/SingleFoodPage/SingleFoodPage";
 import AllFoods from "../Pages/AllFoodPage/AllFoods";
+import PurchasePage from "../Pages/PurchasePage/PurchasePage";
 
 const Route = createBrowserRouter([
   {
@@ -34,6 +35,12 @@ const Route = createBrowserRouter([
     element: <SingleFoodPage />,
     loader: ({ params }) =>
       fetch(`http://localhost:5000/singleFood/${params.id}`),
+  },
+  {
+    path: "/purchase/:id",
+    element: <PurchasePage />,
+    loader: ({ params }) =>
+      fetch(`http://localhost:5000/purchase/${params.id}`),
   },
   {
     path: "/login",

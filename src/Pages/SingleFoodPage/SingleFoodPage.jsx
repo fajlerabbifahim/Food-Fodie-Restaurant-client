@@ -7,6 +7,7 @@ function SingleFoodPage() {
   const food = useLoaderData();
   console.log(food.name);
   const {
+    _id,
     name,
     image,
     category,
@@ -71,7 +72,7 @@ function SingleFoodPage() {
               backgroundColor: "#FF5722",
             }}
           >
-            <Link> Purchase</Link>
+            <Link to={`/purchase/${_id}`}> Purchase</Link>
           </button>
         </div>
       </main>

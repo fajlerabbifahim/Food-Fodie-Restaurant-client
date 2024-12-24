@@ -23,7 +23,9 @@ function AllFoods() {
           <div className="absolute inset-0 bg-black opacity-50"></div>
 
           <div className="relative z-10 text-center w-11/12 max-w-2xl">
-            <h1 className="text-3xl md:text-4xl font-semibold">All Foods</h1>
+            <h1 className="text-3xl md:text-4xl font-semibold">
+              Savor Every Bite!
+            </h1>
             <p className="text-sm md:text-base mt-2 text-gray-300 italic">
               Find your favorite food here!
             </p>
