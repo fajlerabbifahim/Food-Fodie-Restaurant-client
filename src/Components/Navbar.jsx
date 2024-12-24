@@ -43,12 +43,24 @@ function Navbar() {
           Gallery
         </NavLink>
       </li>
+      <li>
+        <NavLink
+          to="/addFood"
+          className={({ isActive }) =>
+            isActive
+              ? "text-white bg-blue-500 px-3 py-2 rounded-md font-semibold"
+              : "px-3 py-2 text-gray-600 font-medium hover:text-blue-500"
+          }
+        >
+          Add Food
+        </NavLink>
+      </li>
     </>
   );
 
   return (
     <div>
-      <div className="navbar bg-base-100 ">
+      <div className="navbar bg-base-100  ">
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">

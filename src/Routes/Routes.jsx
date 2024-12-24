@@ -7,6 +7,8 @@ import Register from "../Pages/Register/Register";
 import SingleFoodPage from "../Pages/SingleFoodPage/SingleFoodPage";
 import AllFoods from "../Pages/AllFoodPage/AllFoods";
 import PurchasePage from "../Pages/PurchasePage/PurchasePage";
+import GalleryPage from "../Pages/MyGallery/GalleryPage";
+import AddFood from "../Pages/AddFood/AddFood";
 
 const Route = createBrowserRouter([
   {
@@ -28,7 +30,11 @@ const Route = createBrowserRouter([
   },
   {
     path: "/gallery",
-    element: <h1>i am the gallery</h1>,
+    element: <GalleryPage />,
+  },
+  {
+    path: "/addFood",
+    element: <AddFood />,
   },
   {
     path: "/singleFood/:id",
@@ -42,6 +48,7 @@ const Route = createBrowserRouter([
     loader: ({ params }) =>
       fetch(`http://localhost:5000/purchase/${params.id}`),
   },
+
   {
     path: "/login",
     element: <LoginPage />,

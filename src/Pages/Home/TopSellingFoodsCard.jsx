@@ -28,7 +28,7 @@ function TopSellingFoodsCard({ food }) {
             <span className="font-medium">Total Sells:</span> {food.sellCount}
           </p>
           <p className="text-[#757575] mb-1">
-            <span className="font-medium">Price:</span> ${food.price.toFixed(2)}
+            <span className="font-medium">Price:</span> ${food.price}
           </p>
           <p className="text-gray-500 text-sm italic">
             {food.shortDescription}

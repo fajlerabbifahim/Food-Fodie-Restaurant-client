@@ -56,7 +56,7 @@ function SingleFoodPage() {
             className="text-lg font-semibold mt-4"
             style={{ color: "#212121" }}
           >
-            Price: ${price.toFixed(2)}
+            Price: ${price}
           </p>
           <p className="text-sm mt-1" style={{ color: "#757575" }}>
             Available Quantity: {quantity}

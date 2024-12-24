@@ -36,7 +36,7 @@ function AllFoodsCard({ food }) {
             <span className="font-medium">Total Sells:</span> {sellCount}
           </p>
           <p className="text-[#757575] mb-1">
-            <span className="font-medium">Price:</span> ${price.toFixed(2)}
+            <span className="font-medium">Price:</span> ${price}
           </p>
           <p className="text-gray-500 text-sm italic">{shortDescription}</p>
         </div>
