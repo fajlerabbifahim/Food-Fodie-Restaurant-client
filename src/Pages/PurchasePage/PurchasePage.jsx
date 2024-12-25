@@ -62,7 +62,6 @@ function PurchasePage() {
       currentDate,
       image,
     };
-    console.log(purchaseData);
 
     axios
       .post("http://localhost:5000/purchase", purchaseData)

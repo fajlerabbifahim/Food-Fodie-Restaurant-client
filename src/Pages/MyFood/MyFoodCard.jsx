@@ -1,8 +1,9 @@
 import React from "react";
 import { FaEdit } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 function MyFoodCard({ food }) {
-  const { name, price, quantity, image } = food;
+  const { name, price, quantity, image, _id } = food;
 
   return (
     <div>
@@ -26,8 +27,14 @@ function MyFoodCard({ food }) {
         {/* Right Top Corner: Update Button */}
         <div className="absolute top-2 right-2">
           <button className="flex items-center gap-1 bg-[#FF5722] text-white px-3 py-1 rounded-sm hover:bg-[#E64A19] transition">
-            <FaEdit />
-            Update
+            <Link
+              to={`/myFoodUpdate/${_id}`}
+              className="flex items-center gap-2"
+            >
+              {" "}
+              <FaEdit />
+              Update
+            </Link>
           </button>
         </div>
       </div>
