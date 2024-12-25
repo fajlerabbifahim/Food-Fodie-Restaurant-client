@@ -10,6 +10,7 @@ import PurchasePage from "../Pages/PurchasePage/PurchasePage";
 import GalleryPage from "../Pages/MyGallery/GalleryPage";
 import AddFood from "../Pages/AddFood/AddFood";
 import MyOders from "../Pages/MyOder/MyOders";
+import MyFoods from "../Pages/MyFood/MyFoods";
 
 const Route = createBrowserRouter([
   {
@@ -36,6 +37,12 @@ const Route = createBrowserRouter([
   {
     path: "/addFood",
     element: <AddFood />,
+  },
+  {
+    path: "/myFoods/:email",
+    element: <MyFoods />,
+    loader: ({ params }) =>
+      fetch(`http://localhost:5000/myFoods/${params.email}`),
   },
   {
     path: "/myorders",

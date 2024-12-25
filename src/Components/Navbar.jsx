@@ -67,6 +67,18 @@ function Navbar() {
           My Orders
         </NavLink>
       </li>
+      <li>
+        <NavLink
+          to={`/myFoods/${user?.email}`}
+          className={({ isActive }) =>
+            isActive
+              ? "text-white bg-[#FF5722] px-3 py-2 rounded-md font-semibold"
+              : "px-3 py-2 text-gray-600 font-medium hover:text-[#E64A19]"
+          }
+        >
+          My Foods
+        </NavLink>
+      </li>
     </>
   );
 
@@ -129,7 +141,7 @@ function Navbar() {
               className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
             >
               <li>
-                <Link>My Food</Link>
+                <Link to={`/myFoods/${user?.email}`}>My Food</Link>
               </li>
               <li>
                 <Link to="/addFood">Add Food</Link>
