@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import useAuth from "../../Hooks/useAuth";
 import moment from "moment";
 import axios from "axios";
@@ -10,6 +10,7 @@ import Footer from "../../Components/Footer";
 function PurchasePage() {
   const food = useLoaderData();
   const currentDate = moment().format("MMMM DD, YYYY HH:mm");
+  const navigate = useNavigate();
   const {
     _id,
     name,
@@ -21,21 +22,19 @@ function PurchasePage() {
     origin,
     shortDescription,
     details,
-    addedBy: { userId, username },
+    addedBy,
     purchaseCount,
     addedDate,
   } = food;
 
-  const [availableQuantity, setAvailableQuantity] = useState(quantity);
-  const [selectedQuantity, setSelectedQuantity] = useState(0);
+  const foodOwner = addedBy.name;
+
+  const [availableQuantity, setAvailableQuantity] = useState(quantity - 1);
+  const [selectedQuantity, setSelectedQuantity] = useState(1);
   const [sellCountValue, setSellCountValue] = useState(sellCount);
 
   const selectQuantityIncrease = () => {
-    if (
-      selectedQuantity >= 0 &&
-      availableQuantity > 0 &&
-      selectedQuantity <= 19
-    ) {
+    if (selectedQuantity < 20 && availableQuantity > 0) {
       setSelectedQuantity(selectedQuantity + 1);
       setAvailableQuantity(availableQuantity - 1);
       setSellCountValue(sellCountValue + 1);
@@ -43,7 +42,7 @@ function PurchasePage() {
   };
 
   const selectQuantityDecrease = () => {
-    if (selectedQuantity > 0) {
+    if (selectedQuantity > 1) {
       setSelectedQuantity(selectedQuantity - 1);
       setAvailableQuantity(availableQuantity + 1);
       setSellCountValue(sellCountValue - 1);
@@ -53,6 +52,14 @@ function PurchasePage() {
   const handlePurchase = (e) => {
     e.preventDefault();
 
+    if (addedBy.email) {
+      return Swal.fire({
+        title: "Cancelled",
+        text: "You don't Purchase your own Food :)",
+        icon: "error",
+      });
+    }
+
     const formData = new FormData(e.target);
     const initialData = Object.fromEntries(formData.entries());
 
@@ -61,6 +68,7 @@ function PurchasePage() {
       selectedQuantity,
       currentDate,
       image,
+      foodOwner,
     };
 
     axios
@@ -92,6 +100,7 @@ function PurchasePage() {
             timer: 1500,
           });
         }
+        navigate("/myorders");
       })
       .catch((error) => {
         console.error("Error updating food data:", error);

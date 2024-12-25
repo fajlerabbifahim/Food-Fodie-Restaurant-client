@@ -111,7 +111,7 @@ function Navbar() {
             </ul>
           </div>
           <div className="text-center ">
-            <h1 className="text-3xl font-extrabold text-gray-800">
+            <h1 className="text-lg md:text-2xl lg:text-2xl font-extrabold text-gray-800">
               F<span className="text-[#FF5722]">oo</span>d F
               <span className="text-[#FF5722]">oo</span>
               die
@@ -125,32 +125,36 @@ function Navbar() {
         <div className="navbar-end">
           {/* user avatar part  */}
 
-          <div className="dropdown dropdown-end mr-4">
-            <div
-              tabIndex={0}
-              role="button"
-              className="btn btn-ghost btn-circle avatar"
-              aria-label="User menu"
-            >
-              <div className="w-10 rounded-full">
-                <img alt="User Avatar" src={user?.photoURL} />
+          {user?.email ? (
+            <div className="dropdown dropdown-end mr-2">
+              <div
+                tabIndex={0}
+                role="button"
+                className="btn btn-ghost btn-circle avatar"
+                aria-label="User menu"
+              >
+                <div className="w-10 rounded-full">
+                  <img alt="User Avatar" src={user?.photoURL} />
+                </div>
               </div>
+              <ul
+                tabIndex={0}
+                className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
+              >
+                <li>
+                  <Link to={`/myFoods/${user?.email}`}>My Food</Link>
+                </li>
+                <li>
+                  <Link to="/addFood">Add Food</Link>
+                </li>
+                <li>
+                  <Link to="/myorders">My Orders</Link>
+                </li>
+              </ul>
             </div>
-            <ul
-              tabIndex={0}
-              className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
-            >
-              <li>
-                <Link to={`/myFoods/${user?.email}`}>My Food</Link>
-              </li>
-              <li>
-                <Link to="/addFood">Add Food</Link>
-              </li>
-              <li>
-                <Link to="/myorders">My Orders</Link>
-              </li>
-            </ul>
-          </div>
+          ) : (
+            ""
+          )}
 
           {/* ********user******** */}
 
@@ -158,7 +162,7 @@ function Navbar() {
             <>
               <Link
                 onClick={logOut}
-                className="bg-[#FF5722] text-white hover:bg-[#E64A19] px-6 py-2 rounded-sm shadow-md font-semibold"
+                className="bg-[#FF5722] text-white hover:bg-[#E64A19] px-2 py-1 lg:px-6 lg:py-2 rounded-sm shadow-md font-semibold"
               >
                 Sign Out
               </Link>
@@ -167,7 +171,7 @@ function Navbar() {
             <>
               <Link
                 to="/login"
-                className="bg-[#FF5722] text-white hover:bg-[#E64A19] px-6 py-2 rounded-sm shadow-md font-semibold"
+                className="bg-[#FF5722] text-white hover:bg-[#E64A19] px-2 py-1  lg:px-6 lg:py-2 rounded-sm shadow-md font-semibold"
               >
                 Login
               </Link>
