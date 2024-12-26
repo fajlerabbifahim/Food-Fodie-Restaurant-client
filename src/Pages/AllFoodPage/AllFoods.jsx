@@ -1,4 +1,5 @@
 import { useLoaderData } from "react-router-dom";
+import { useState } from "react";
 import Navbar from "../../Components/Navbar";
 import allFoodPageBanner from "../../assets/all-food/all-food-page-banner.jpg";
 import AllFoodsCard from "./AllFoodsCard";
@@ -6,6 +7,11 @@ import Footer from "../../Components/Footer";
 
 function AllFoods() {
   const allFoods = useLoaderData();
+  const [searchTerm, setSearchTerm] = useState("");
+
+  const filteredFoods = allFoods.filter((food) =>
+    food.name.toLowerCase().includes(searchTerm.toLowerCase())
+  );
 
   return (
     <div>
@@ -30,10 +36,13 @@ function AllFoods() {
               Find your favorite food here!
             </p>
             <div className="flex items-center mt-4 bg-white rounded-full px-4 py-2 shadow-md">
+              {/* Search Input */}
               <input
                 type="text"
                 placeholder="Search your favorite food..."
                 className="flex-grow text-gray-700 text-sm md:text-base outline-none"
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
               />
               <button className="bg-[#FF5722] text-white px-4 py-2 rounded-full text-sm font-semibold ml-2">
                 Search
@@ -43,16 +52,22 @@ function AllFoods() {
         </section>
 
         {/* All Foods Section */}
-        <section className="w-11/12 mx-auto mt-10 ">
+        <section className="w-11/12 mx-auto mt-10">
           <h2 className="text-xl font-semibold text-[#212121] mb-4">
             All Foods
           </h2>
 
-          {/* All Foods Grid here */}
+          {/* All Foods Grid system */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {allFoods.map((food) => (
-              <AllFoodsCard key={food._id} food={food} />
-            ))}
+            {filteredFoods.length > 0 ? (
+              filteredFoods.map((food) => (
+                <AllFoodsCard key={food._id} food={food} />
+              ))
+            ) : (
+              <p className="text-center mb-10 text-gray-500 col-span-full">
+                No foods found matching your search.
+              </p>
+            )}
           </div>
         </section>
       </main>
