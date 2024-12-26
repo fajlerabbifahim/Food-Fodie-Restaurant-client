@@ -2,6 +2,7 @@ import React from "react";
 import Banner from "./Banner";
 import TopSellingFoods from "./TopSellingFoods";
 import OderStep from "../../Components/OderStep";
+import CustomerReviews from "./CustomerReviews";
 
 function Home() {
   return (
@@ -13,8 +14,14 @@ function Home() {
         {/* top selling foods */}
         <TopSellingFoods />
 
+        {/* food odering step section  */}
         <section className="my-2">
           <OderStep />
+        </section>
+
+        {/* CustomerReviews section   */}
+        <section>
+          <CustomerReviews />
         </section>
       </main>
     </div>

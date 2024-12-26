@@ -123,6 +123,8 @@ function Navbar() {
         </div>
 
         <div className="navbar-end">
+          {/* dark light mode  button  */}
+
           {/* user avatar part  */}
 
           {user?.email ? (

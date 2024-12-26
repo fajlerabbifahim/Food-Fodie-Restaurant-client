@@ -30,9 +30,7 @@ function LoginPage() {
         });
         navigate("/");
       })
-      .catch((e) => {
-        console.error(e.message);
-
+      .catch(() => {
         Swal.fire({
           icon: "error",
           title: "Invalid Credential",
