@@ -26,9 +26,7 @@ function AddFood() {
     console.log(foodData);
 
     axios
-      .post("https://food-foodie-server.vercel.app/addFood", foodData, {
-        withCredentials: true,
-      })
+      .post("https://food-foodie-server.vercel.app/addFood", foodData)
       .then((res) => {
         if (res.data.acknowledged) {
           Swal.fire({

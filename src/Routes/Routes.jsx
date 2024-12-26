@@ -53,9 +53,7 @@ const Route = createBrowserRouter([
       </PrivetRoute>
     ),
     loader: ({ params }) =>
-      fetch(`https://food-foodie-server.vercel.app/myFoods/${params.email}`, {
-        credentials: "include",
-      }),
+      fetch(`https://food-foodie-server.vercel.app/myFoods/${params.email}`),
   },
   {
     path: "/myFoodUpdate/:id",
@@ -74,10 +72,7 @@ const Route = createBrowserRouter([
         <MyOders />
       </PrivetRoute>
     ),
-    loader: () =>
-      fetch("https://food-foodie-server.vercel.app/myOrders", {
-        credentials: "include",
-      }),
+    loader: () => fetch("https://food-foodie-server.vercel.app/myOrders"),
   },
   {
     path: "/singleFood/:id",
