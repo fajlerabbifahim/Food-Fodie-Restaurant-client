@@ -8,6 +8,7 @@ import Navbar from "../../Components/Navbar";
 import Footer from "../../Components/Footer";
 
 function PurchasePage() {
+  const { user } = useAuth();
   const food = useLoaderData();
   const currentDate = moment().format("MMMM DD, YYYY HH:mm");
   const navigate = useNavigate();
@@ -52,7 +53,7 @@ function PurchasePage() {
   const handlePurchase = (e) => {
     e.preventDefault();
 
-    if (addedBy.email) {
+    if (addedBy.email === user.email) {
       return Swal.fire({
         title: "Cancelled",
         text: "You don't Purchase your own Food :)",
