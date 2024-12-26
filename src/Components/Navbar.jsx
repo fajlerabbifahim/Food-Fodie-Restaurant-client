@@ -1,4 +1,3 @@
-import React from "react";
 import { Link, NavLink } from "react-router-dom";
 import useAuth from "../Hooks/useAuth";
 
@@ -110,7 +109,7 @@ function Navbar() {
               {links}
             </ul>
           </div>
-          <div className="text-center ">
+          <div className="text-center dark:text-white ">
             <h1 className="text-lg md:text-2xl lg:text-2xl font-extrabold text-gray-800">
               F<span className="text-[#FF5722]">oo</span>d F
               <span className="text-[#FF5722]">oo</span>
@@ -123,8 +122,6 @@ function Navbar() {
         </div>
 
         <div className="navbar-end">
-          {/* dark light mode  button  */}
-
           {/* user avatar part  */}
 
           {user?.email ? (
