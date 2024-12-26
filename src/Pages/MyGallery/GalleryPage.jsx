@@ -31,7 +31,7 @@ function GalleryPage() {
         </section>
 
         {/* Gallery Section */}
-        <section className="w-11/12 mx-auto mt-10">
+        <section className="w-11/12 mx-auto my-10">
           <GalleryImage />
         </section>
       </main>

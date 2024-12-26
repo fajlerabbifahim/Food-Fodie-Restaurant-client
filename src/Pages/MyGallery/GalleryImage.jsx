@@ -1,12 +1,4 @@
-import LightGallery from "lightgallery/react";
-import "lightgallery/css/lightgallery.css";
-import "lightgallery/css/lg-zoom.css";
-import "lightgallery/css/lg-thumbnail.css";
-
-import lgThumbnail from "lightgallery/plugins/thumbnail";
-import lgZoom from "lightgallery/plugins/zoom";
-
-// Import ALL STATIC images
+import React from "react";
 import img1 from "../../assets/GalleryImage/image (1).jpg";
 import img2 from "../../assets/GalleryImage/image (2).jpg";
 import img3 from "../../assets/GalleryImage/image (3).jpg";
@@ -17,131 +9,50 @@ import img7 from "../../assets/GalleryImage/image (7).jpg";
 import img8 from "../../assets/GalleryImage/image (8).jpg";
 import img9 from "../../assets/GalleryImage/image (9).jpg";
 import img10 from "../../assets/GalleryImage/image (10).jpg";
+import img11 from "../../assets/GalleryImage/image (11).jpg";
+import img12 from "../../assets/GalleryImage/image (12).jpg";
 
-function GalleryImage() {
+const Gallery = () => {
+  const images = [
+    { src: img1, name: "Fajle Rabbi Fahim" },
+    { src: img2, name: "Kazi Nazrul Islam" },
+    { src: img3, name: "Al Rafi " },
+    { src: img4, name: "Lalon Fakir" },
+    { src: img5, name: "Sohanur Rahman" },
+    { src: img6, name: "Fazlul Haque" },
+    { src: img7, name: "Zahir Raihan" },
+    { src: img8, name: "Humayun Ahmed" },
+    { src: img9, name: "Apu Biswas" },
+    { src: img10, name: "Shakib Khan" },
+    { src: img11, name: "Shah Rukh Khan" },
+    { src: img12, name: "Tony Stark" },
+  ];
+
   return (
-    // <div className="p-4">
-    //   {/* LightGallery Wrapper */}
-    //   <LightGallery speed={500} plugins={[lgThumbnail, lgZoom]} mode="lg-fade">
-    //     {/* Grid Container */}
-    //     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-    //       {/* Individual Gallery Items */}
-    //       <a href={img1} data-src={img1} className="rounded overflow-hidden">
-    //         <img
-    //           src={img1}
-    //           alt="Gallery Image 1"
-    //           className="w-full h-full object-cover"
-    //         />
-    //       </a>
-    //       <a href={img2} data-src={img2} className="rounded overflow-hidden">
-    //         <img
-    //           src={img2}
-    //           alt="Gallery Image 2"
-    //           className="w-full h-full object-cover"
-    //         />
-    //       </a>
-    //       <a href={img3} data-src={img3} className="rounded overflow-hidden">
-    //         <img
-    //           src={img3}
-    //           alt="Gallery Image 3"
-    //           className="w-full h-full object-cover"
-    //         />
-    //       </a>
-    //       <a href={img4} data-src={img4} className="rounded overflow-hidden">
-    //         <img
-    //           src={img4}
-    //           alt="Gallery Image 4"
-    //           className="w-full h-full object-cover"
-    //         />
-    //       </a>
-    //       <a href={img5} data-src={img5} className="rounded overflow-hidden">
-    //         <img
-    //           src={img5}
-    //           alt="Gallery Image 5"
-    //           className="w-full h-full object-cover"
-    //         />
-    //       </a>
-    //       <a href={img6} data-src={img6} className="rounded overflow-hidden">
-    //         <img
-    //           src={img6}
-    //           alt="Gallery Image 6"
-    //           className="w-full h-full object-cover"
-    //         />
-    //       </a>
-    //       <a href={img7} data-src={img7} className="rounded overflow-hidden">
-    //         <img
-    //           src={img7}
-    //           alt="Gallery Image 7"
-    //           className="w-full h-full object-cover"
-    //         />
-    //       </a>
-    //       <a href={img8} data-src={img8} className="rounded overflow-hidden">
-    //         <img
-    //           src={img8}
-    //           alt="Gallery Image 8"
-    //           className="w-full h-full object-cover"
-    //         />
-    //       </a>
-    //       <a href={img9} data-src={img9} className="rounded overflow-hidden">
-    //         <img
-    //           src={img9}
-    //           alt="Gallery Image 9"
-    //           className="w-full h-full object-cover"
-    //         />
-    //       </a>
-    //       <a href={img10} data-src={img10} className="rounded overflow-hidden">
-    //         <img
-    //           src={img10}
-    //           alt="Gallery Image 10"
-    //           className="w-full h-full object-cover"
-    //         />
-    //       </a>
-    //       <a href="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_1280.jpg">
-    //         <img
-    //           alt="img1"
-    //           src="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_1280.jpg"
-    //         />
-    //       </a>
-    //     </div>
-    //   </LightGallery>
-    // </div>
-    <div className="p-4">
-      {/* LightGallery Wrapper */}
-      <LightGallery speed={500} plugins={[lgThumbnail, lgZoom]} mode="lg-fade">
-        {/* Grid Container */}
-        <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-          {/* Individual Gallery Items */}
-          {[img1, img2, img3, img4, img5, img6, img7, img8, img9, img10].map(
-            (image, index) => (
-              <a
-                href={image}
-                data-src={image}
-                key={index}
-                className="rounded overflow-hidden"
-              >
-                <img
-                  src={image}
-                  alt={`Gallery Image ${index + 1}`}
-                  className="w-full h-full object-cover"
-                />
-              </a>
-            )
-          )}
-          {/* Extra Item */}
-        </div>
-        <a
-          href="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_1280.jpg"
-          className="rounded overflow-hidden"
-        >
-          <img
-            alt="img1"
-            src="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_1280.jpg"
-            className="w-full h-full object-cover"
-          />
-        </a>
-      </LightGallery>
+    <div className=" min-h-screen ">
+      <h1 className="text-4xl font-semibold text-gray-500 underline text-center mb-8">
+        Gallery
+      </h1>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 w-11/12 mx-auto">
+        {images.map((image, index) => (
+          <div
+            key={index}
+            className="relative group rounded-lg overflow-hidden shadow-lg"
+          >
+            <img
+              src={image.src}
+              alt={image.name}
+              className="w-full h-full object-cover transform transition-transform duration-500 group-hover:scale-110 group-hover:blur-sm"
+            />
+            <div className="absolute inset-0 bg-black bg-opacity-60 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+              <p className="text-white text-lg font-medium">{image.name}</p>
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
   );
-}
+};
 
-export default GalleryImage;
+export default Gallery;
