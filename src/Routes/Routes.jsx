@@ -12,6 +12,7 @@ import AddFood from "../Pages/AddFood/AddFood";
 import MyOders from "../Pages/MyOder/MyOders";
 import MyFoods from "../Pages/MyFood/MyFoods";
 import MyFoodUpdate from "../Pages/MyFoodUpdate/MyFoodUpdate";
+import PrivetRoute from "./PrivetRoute";
 
 const Route = createBrowserRouter([
   {
@@ -37,24 +38,45 @@ const Route = createBrowserRouter([
   },
   {
     path: "/addFood",
-    element: <AddFood />,
+    element: (
+      <PrivetRoute>
+        <AddFood />
+      </PrivetRoute>
+    ),
   },
   {
     path: "/myFoods/:email",
-    element: <MyFoods />,
+    element: (
+      <PrivetRoute>
+        <MyFoods />
+      </PrivetRoute>
+    ),
     loader: ({ params }) =>
-      fetch(`http://localhost:5000/myFoods/${params.email}`),
+      fetch(`http://localhost:5000/myFoods/${params.email}`, {
+        credentials: "include",
+      }),
   },
   {
     path: "/myFoodUpdate/:id",
-    element: <MyFoodUpdate />,
+    element: (
+      <PrivetRoute>
+        <MyFoodUpdate />
+      </PrivetRoute>
+    ),
     loader: ({ params }) =>
       fetch(`http://localhost:5000/updateFood/${params.id}`),
   },
   {
     path: "/myorders",
-    element: <MyOders />,
-    loader: () => fetch("http://localhost:5000/myOrders"),
+    element: (
+      <PrivetRoute>
+        <MyOders />
+      </PrivetRoute>
+    ),
+    loader: () =>
+      fetch("http://localhost:5000/myOrders", {
+        credentials: "include",
+      }),
   },
   {
     path: "/singleFood/:id",
@@ -64,7 +86,11 @@ const Route = createBrowserRouter([
   },
   {
     path: "/purchase/:id",
-    element: <PurchasePage />,
+    element: (
+      <PrivetRoute>
+        <PurchasePage />
+      </PrivetRoute>
+    ),
     loader: ({ params }) =>
       fetch(`http://localhost:5000/purchase/${params.id}`),
   },

@@ -23,19 +23,23 @@ function AddFood() {
       sellCount: parseInt(initialData.sellCount),
       addedBy,
     };
-    console.log(foodData);
 
-    axios.post("http://localhost:5000/addFood", foodData).then((res) => {
-      if (res.data.acknowledged) {
-        Swal.fire({
-          position: "center",
-          icon: "success",
-          title: "Food Purchased successfully!",
-          showConfirmButton: false,
-          timer: 1500,
-        });
-      }
-    });
+    axios
+      .post("http://localhost:5000/addFood", foodData, {
+        withCredentials: true,
+      })
+      .then((res) => {
+        if (res.data.acknowledged) {
+          Swal.fire({
+            position: "center",
+            icon: "success",
+            title: "Food Purchased successfully!",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+          e.target.reset();
+        }
+      });
   };
 
   return (
@@ -90,6 +94,7 @@ function AddFood() {
               <input
                 type="number"
                 name="sellCount"
+                value={0}
                 placeholder="Sell Count"
                 className="w-full px-6 py-3 border border-[#c29b8f]  rounded-sm text-[#757575] focus:outline-none focus:ring-1 focus:ring-[#FF5722] focus:border-transparent"
               />

@@ -37,7 +37,10 @@ function MyOdersCard() {
     <div>
       {oderCard.length > 0 ? (
         oderCard.map((food) => (
-          <div className=" my-2 flex items-center bg-white shadow-lg rounded-lg p-4 h-48 w-full relative border border-gray-200">
+          <div
+            key={food._id}
+            className=" my-2 flex items-center bg-white shadow-lg rounded-lg p-4 h-48 w-full relative border border-gray-200"
+          >
             {/* Left Side: Image */}
             <div className="w-1/4 h-full">
               <img
