@@ -23,6 +23,7 @@ function AddFood() {
       sellCount: parseInt(initialData.sellCount),
       addedBy,
     };
+    console.log(foodData);
 
     axios
       .post("https://food-foodie-server.vercel.app/addFood", foodData, {
