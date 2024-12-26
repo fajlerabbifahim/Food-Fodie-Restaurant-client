@@ -5,7 +5,7 @@ import Navbar from "../../Components/Navbar";
 
 function SingleFoodPage() {
   const food = useLoaderData();
-  console.log(food.name);
+
   const {
     _id,
     name,

@@ -23,14 +23,15 @@ const Route = createBrowserRouter([
       {
         path: "/",
         element: <Home />,
-        loader: () => fetch("http://localhost:5000/topSellingFood"),
+        loader: () =>
+          fetch("https://food-foodie-server.vercel.app/topSellingFood"),
       },
     ],
   },
   {
     path: "/allFoods",
     element: <AllFoods />,
-    loader: () => fetch("http://localhost:5000/allFoods"),
+    loader: () => fetch("https://food-foodie-server.vercel.app/allFoods"),
   },
   {
     path: "/gallery",
@@ -52,7 +53,7 @@ const Route = createBrowserRouter([
       </PrivetRoute>
     ),
     loader: ({ params }) =>
-      fetch(`http://localhost:5000/myFoods/${params.email}`, {
+      fetch(`https://food-foodie-server.vercel.app/myFoods/${params.email}`, {
         credentials: "include",
       }),
   },
@@ -64,7 +65,7 @@ const Route = createBrowserRouter([
       </PrivetRoute>
     ),
     loader: ({ params }) =>
-      fetch(`http://localhost:5000/updateFood/${params.id}`),
+      fetch(`https://food-foodie-server.vercel.app/updateFood/${params.id}`),
   },
   {
     path: "/myorders",
@@ -74,7 +75,7 @@ const Route = createBrowserRouter([
       </PrivetRoute>
     ),
     loader: () =>
-      fetch("http://localhost:5000/myOrders", {
+      fetch("https://food-foodie-server.vercel.app/myOrders", {
         credentials: "include",
       }),
   },
@@ -82,7 +83,7 @@ const Route = createBrowserRouter([
     path: "/singleFood/:id",
     element: <SingleFoodPage />,
     loader: ({ params }) =>
-      fetch(`http://localhost:5000/singleFood/${params.id}`),
+      fetch(`https://food-foodie-server.vercel.app/singleFood/${params.id}`),
   },
   {
     path: "/purchase/:id",
@@ -92,7 +93,7 @@ const Route = createBrowserRouter([
       </PrivetRoute>
     ),
     loader: ({ params }) =>
-      fetch(`http://localhost:5000/purchase/${params.id}`),
+      fetch(`https://food-foodie-server.vercel.app/purchase/${params.id}`),
   },
 
   {

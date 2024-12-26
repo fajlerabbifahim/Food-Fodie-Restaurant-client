@@ -25,7 +25,7 @@ function AddFood() {
     };
 
     axios
-      .post("http://localhost:5000/addFood", foodData, {
+      .post("https://food-foodie-server.vercel.app/addFood", foodData, {
         withCredentials: true,
       })
       .then((res) => {

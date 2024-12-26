@@ -72,9 +72,8 @@ function PurchasePage() {
     };
 
     axios
-      .post("http://localhost:5000/purchase", purchaseData)
+      .post("https://food-foodie-server.vercel.app/purchase", purchaseData)
       .then((response) => {
-        console.log("Purchase Data:", response.data);
         updatedFood();
       })
       .catch((error) => {
@@ -89,7 +88,10 @@ function PurchasePage() {
     };
 
     axios
-      .patch(`http://localhost:5000/updateFood/${_id}`, updatedFoodData)
+      .patch(
+        `https://food-foodie-server.vercel.app/updateFood/${_id}`,
+        updatedFoodData
+      )
       .then((response) => {
         if (response.data.acknowledged) {
           Swal.fire({

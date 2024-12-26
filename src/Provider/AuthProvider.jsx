@@ -52,22 +52,22 @@ function AuthProvider({ children }) {
       if (currentUser?.email) {
         const user = { email: currentUser.email };
         axios
-          .post("http://localhost:5000/jwt", user, { withCredentials: true })
+          .post("https://food-foodie-server.vercel.app/jwt", user, {
+            withCredentials: true,
+          })
           .then((res) => {
-            console.log(res.data);
             setLoading(false);
           });
       } else {
         axios
           .post(
-            "http://localhost:5000/logout",
+            "https://food-foodie-server.vercel.app/logout",
             {},
             {
               withCredentials: true,
             }
           )
           .then((res) => {
-            console.log("clear cookie logout", res.data);
             setLoading(false);
           });
       }
@@ -80,8 +80,6 @@ function AuthProvider({ children }) {
   const updateUser = (updateData) => {
     return updateProfile(auth.currentUser, updateData);
   };
-
-  console.log(user);
 
   const authInfo = {
     registerUser,
