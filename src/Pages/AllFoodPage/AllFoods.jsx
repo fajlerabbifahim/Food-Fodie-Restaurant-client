@@ -53,7 +53,7 @@ function AllFoods() {
 
         {/* All Foods Section */}
         <section className="w-11/12 mx-auto mt-10">
-          <h2 className="text-xl font-semibold text-[#212121] mb-4">
+          <h2 className=" underline text-2xl font-semibold text-gray-500 mb-4">
             All Foods
           </h2>
 

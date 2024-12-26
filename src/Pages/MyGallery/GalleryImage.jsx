@@ -30,7 +30,7 @@ const Gallery = () => {
 
   return (
     <div className=" min-h-screen ">
-      <h1 className="text-4xl font-semibold text-gray-500 underline text-center mb-8">
+      <h1 className="text-2xl font-semibold text-gray-500 underline text-center mb-8">
         Gallery
       </h1>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 w-11/12 mx-auto">

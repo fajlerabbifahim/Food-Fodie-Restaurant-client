@@ -25,7 +25,7 @@ const CustomerReviews = () => {
 
   return (
     <div
-      className="relative bg-cover bg-center h-screen flex items-center justify-center"
+      className="relative bg-cover bg-center max-h-[500px] flex items-center justify-center mb-10"
       style={{
         backgroundImage: `url(${reviewBG})`,
       }}
@@ -34,7 +34,7 @@ const CustomerReviews = () => {
       <div className="absolute inset-0 bg-black bg-opacity-60"></div>
 
       {/* Swiper Container */}
-      <div className="relative z-10 w-full max-w-2xl p-6">
+      <div className="relative z-10 w-full max-w-2xl p-6 py-14 ">
         <h2 className="text-4xl text-center font-bold text-white mb-8">
           What Our Customers Say
         </h2>
@@ -43,13 +43,13 @@ const CustomerReviews = () => {
           spaceBetween={30}
           slidesPerView={1}
           loop={true}
-          autoplay={{ delay: 1000, disableOnInteraction: false }}
+          autoplay={{ delay: 2000, disableOnInteraction: false }}
           className="p-4"
         >
           {reviews.map((review, index) => (
             <SwiperSlide key={index}>
               <div
-                className="bg-white bg-opacity-30 backdrop-blur-sm p-8 rounded-lg shadow-lg text-center"
+                className="bg-white bg-opacity-30 backdrop-blur-sm p-10 rounded-lg shadow-lg text-center "
                 style={{
                   minHeight: "200px",
                   display: "flex",
