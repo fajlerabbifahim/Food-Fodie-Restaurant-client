@@ -161,7 +161,3 @@ npm run build
 ```bash
 npm run preview
 ```
-
-## 🔑 Admin Credentials
-
-Use the following credentials to log in a
