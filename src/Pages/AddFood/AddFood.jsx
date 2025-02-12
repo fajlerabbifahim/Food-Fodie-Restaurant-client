@@ -25,20 +25,18 @@ function AddFood() {
     };
     console.log(foodData);
 
-    axios
-      .post("https://food-foodie-server.vercel.app/addFood", foodData)
-      .then((res) => {
-        if (res.data.acknowledged) {
-          Swal.fire({
-            position: "center",
-            icon: "success",
-            title: "Food Purchased successfully!",
-            showConfirmButton: false,
-            timer: 1500,
-          });
-          e.target.reset();
-        }
-      });
+    axios.post("http://localhost:5000/addFood", foodData).then((res) => {
+      if (res.data.acknowledged) {
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "Food Added successfully!",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+        e.target.reset();
+      }
+    });
   };
 
   return (

@@ -27,10 +27,7 @@ function MyFoodUpdate() {
     };
 
     axios
-      .put(
-        `https://food-foodie-server.vercel.app/updatedFood/${food._id}`,
-        foodData
-      )
+      .put(`http://localhost:5000/updatedFood/${food._id}`, foodData)
       .then((res) => {
         if (res.data) {
           Swal.fire({
