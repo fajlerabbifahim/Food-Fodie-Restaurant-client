@@ -1,4 +1,3 @@
-import React from "react";
 import Navbar from "../../Components/Navbar";
 
 import { Outlet } from "react-router-dom";
@@ -11,7 +10,7 @@ function HomeLayout() {
         {/* Navbar section  */}
         <Navbar />
       </header>
-      <main className="w-11/12 mx-auto">
+      <main>
         <Outlet />
       </main>
       <Footer />
