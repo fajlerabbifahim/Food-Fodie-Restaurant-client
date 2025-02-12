@@ -1,4 +1,3 @@
-import React from "react";
 import img1 from "../../assets/GalleryImage/image (1).jpg";
 import img2 from "../../assets/GalleryImage/image (2).jpg";
 import img3 from "../../assets/GalleryImage/image (3).jpg";
@@ -14,18 +13,18 @@ import img12 from "../../assets/GalleryImage/image (12).jpg";
 
 const Gallery = () => {
   const images = [
-    { src: img1, name: "Fajle Rabbi Fahim" },
-    { src: img2, name: "Kazi Nazrul Islam" },
-    { src: img3, name: "Al Rafi " },
-    { src: img4, name: "Lalon Fakir" },
-    { src: img5, name: "Sohanur Rahman" },
-    { src: img6, name: "Fazlul Haque" },
-    { src: img7, name: "Zahir Raihan" },
-    { src: img8, name: "Humayun Ahmed" },
-    { src: img9, name: "Apu Biswas" },
-    { src: img10, name: "Shakib Khan" },
-    { src: img11, name: "Shah Rukh Khan" },
-    { src: img12, name: "Tony Stark" },
+    { src: img1, name: "Burger Delight" },
+    { src: img2, name: "Spicy Chicken Wings" },
+    { src: img3, name: "Cheesy Pizza" },
+    { src: img4, name: "Grilled Salmon" },
+    { src: img5, name: "Pasta Alfredo" },
+    { src: img6, name: "Beef Steak" },
+    { src: img7, name: "Mango Smoothie" },
+    { src: img8, name: "Chocolate Brownie" },
+    { src: img9, name: "Tandoori Chicken" },
+    { src: img10, name: "Shrimp Tempura" },
+    { src: img11, name: "Vegetable Salad" },
+    { src: img12, name: "Strawberry Cheesecake" },
   ];
 
   return (
