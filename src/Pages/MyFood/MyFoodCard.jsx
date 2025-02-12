@@ -20,16 +20,18 @@ function MyFoodCard() {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        axios.delete(`http://localhost:5000/deleteFood/${id}`).then((res) => {
-          if (res.data.acknowledged) {
-            Swal.fire({
-              title: "Deleted!",
-              text: "Your food has been deleted.",
-              icon: "success",
-            });
-            setFoods(foods.filter((food) => food._id !== id));
-          }
-        });
+        axios
+          .delete(`https://food-foodie-server.vercel.app/deleteFood/${id}`)
+          .then((res) => {
+            if (res.data.acknowledged) {
+              Swal.fire({
+                title: "Deleted!",
+                text: "Your food has been deleted.",
+                icon: "success",
+              });
+              setFoods(foods.filter((food) => food._id !== id));
+            }
+          });
       }
     });
   };

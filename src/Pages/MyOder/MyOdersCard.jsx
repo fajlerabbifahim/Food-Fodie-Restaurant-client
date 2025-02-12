@@ -19,17 +19,19 @@ function MyOdersCard() {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        axios.delete(`http://localhost:5000/deleteOrder/${id}`).then((res) => {
-          if (res.data.acknowledged) {
-            Swal.fire({
-              title: "Deleted!",
-              text: "Your Ordered food has been deleted.",
-              icon: "success",
-            });
-            const newOderCard = oderCard.filter((food) => food._id !== id);
-            setOderCard(newOderCard);
-          }
-        });
+        axios
+          .delete(`https://food-foodie-server.vercel.app/deleteOrder/${id}`)
+          .then((res) => {
+            if (res.data.acknowledged) {
+              Swal.fire({
+                title: "Deleted!",
+                text: "Your Ordered food has been deleted.",
+                icon: "success",
+              });
+              const newOderCard = oderCard.filter((food) => food._id !== id);
+              setOderCard(newOderCard);
+            }
+          });
       }
     });
   };
