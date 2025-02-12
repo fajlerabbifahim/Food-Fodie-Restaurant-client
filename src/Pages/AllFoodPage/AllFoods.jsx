@@ -1,5 +1,6 @@
 import { useLoaderData } from "react-router-dom";
 import { useState } from "react";
+import { FaChevronDown } from "react-icons/fa"; // Dropdown Arrow Icon
 import Navbar from "../../Components/Navbar";
 import allFoodPageBanner from "../../assets/all-food/all-food-page-banner.jpg";
 import AllFoodsCard from "./AllFoodsCard";
@@ -8,10 +9,23 @@ import Footer from "../../Components/Footer";
 function AllFoods() {
   const allFoods = useLoaderData();
   const [searchTerm, setSearchTerm] = useState("");
+  const [sortOrder, setSortOrder] = useState("default");
+  const [dropdownOpen, setDropdownOpen] = useState(false); // Dropdown Toggle State
 
+  // Search Filtering
   const filteredFoods = allFoods.filter((food) =>
     food.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
+
+  // Sorting Logic
+  const sortedFoods = [...filteredFoods].sort((a, b) => {
+    if (sortOrder === "lowToHigh") {
+      return a.price - b.price;
+    } else if (sortOrder === "highToLow") {
+      return b.price - a.price;
+    }
+    return 0;
+  });
 
   return (
     <div>
@@ -51,16 +65,74 @@ function AllFoods() {
           </div>
         </section>
 
-        {/* All Foods Section */}
+        {/* Sorting & Food List Section */}
         <section className="w-11/12 mx-auto mt-10">
-          <h2 className=" underline text-2xl font-semibold text-gray-500 mb-4">
-            All Foods
-          </h2>
+          <div className="flex justify-between items-center mb-4">
+            <h2 className="underline text-2xl font-semibold text-gray-500">
+              All Foods
+            </h2>
+
+            {/* Sorting Dropdown */}
+            <div className="relative">
+              <button
+                className="flex items-center gap-2 px-4 py-2 bg-[#FF5722] text-white font-semibold rounded-md shadow-md hover:bg-[#E64A19] transition"
+                onClick={() => setDropdownOpen(!dropdownOpen)}
+              >
+                Sort by Price <FaChevronDown />
+              </button>
+
+              {dropdownOpen && (
+                <div className="absolute right-0 mt-2 w-48 bg-white border border-gray-200 rounded-md shadow-lg z-50">
+                  <ul className="py-2">
+                    <li
+                      className={`px-4 py-2 cursor-pointer hover:bg-gray-100 ${
+                        sortOrder === "lowToHigh"
+                          ? "bg-gray-200 font-semibold"
+                          : ""
+                      }`}
+                      onClick={() => {
+                        setSortOrder("lowToHigh");
+                        setDropdownOpen(false);
+                      }}
+                    >
+                      Low to High
+                    </li>
+                    <li
+                      className={`px-4 py-2 cursor-pointer hover:bg-gray-100 ${
+                        sortOrder === "highToLow"
+                          ? "bg-gray-200 font-semibold"
+                          : ""
+                      }`}
+                      onClick={() => {
+                        setSortOrder("highToLow");
+                        setDropdownOpen(false);
+                      }}
+                    >
+                      High to Low
+                    </li>
+                    <li
+                      className={`px-4 py-2 cursor-pointer hover:bg-gray-100 ${
+                        sortOrder === "default"
+                          ? "bg-gray-200 font-semibold"
+                          : ""
+                      }`}
+                      onClick={() => {
+                        setSortOrder("default");
+                        setDropdownOpen(false);
+                      }}
+                    >
+                      Reset
+                    </li>
+                  </ul>
+                </div>
+              )}
+            </div>
+          </div>
 
           {/* All Foods Grid system */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {filteredFoods.length > 0 ? (
-              filteredFoods.map((food) => (
+            {sortedFoods.length > 0 ? (
+              sortedFoods.map((food) => (
                 <AllFoodsCard key={food._id} food={food} />
               ))
             ) : (
