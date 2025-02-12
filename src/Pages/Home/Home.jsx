@@ -1,4 +1,3 @@
-import React from "react";
 import Banner from "./Banner";
 import TopSellingFoods from "./TopSellingFoods";
 import OderStep from "../../Components/OderStep";
