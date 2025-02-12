@@ -2,6 +2,7 @@ import Banner from "./Banner";
 import TopSellingFoods from "./TopSellingFoods";
 import OderStep from "../../Components/OderStep";
 import CustomerReviews from "./CustomerReviews";
+import GetOfferSection from "./GetOfferSection";
 
 function Home() {
   return (
@@ -21,6 +22,10 @@ function Home() {
         {/* CustomerReviews section   */}
         <section>
           <CustomerReviews />
+        </section>
+        {/* Get Offer Mail  section   */}
+        <section>
+          <GetOfferSection />
         </section>
       </main>
     </div>
