@@ -1,12 +1,13 @@
 import React from "react";
 import Navbar from "../../Components/Navbar";
 import Footer from "../../Components/Footer";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import axios from "axios";
 import useAuth from "../../Hooks/useAuth";
 
 function MyFoodUpdate() {
+  const navigate = useNavigate();
   const food = useLoaderData();
   const { user } = useAuth();
   const addedBy = {
@@ -33,10 +34,11 @@ function MyFoodUpdate() {
           Swal.fire({
             position: "center",
             icon: "success",
-            title: "Food Purchased successfully!",
+            title: "Food Update successfully!",
             showConfirmButton: false,
             timer: 1500,
           });
+          navigate(`/myFoods/${user?.email}`);
         }
       });
   };
