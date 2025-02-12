@@ -42,42 +42,49 @@ function Navbar() {
           Gallery
         </NavLink>
       </li>
-      <li>
-        <NavLink
-          to="/addFood"
-          className={({ isActive }) =>
-            isActive
-              ? "text-white bg-[#FF5722] px-3 py-2 rounded-md font-semibold"
-              : "px-3 py-2 text-gray-600 font-medium hover:text-[#E64A19]"
-          }
-        >
-          Add Food
-        </NavLink>
-      </li>
-      <li>
-        <NavLink
-          to="/myorders"
-          className={({ isActive }) =>
-            isActive
-              ? "text-white bg-[#FF5722] px-3 py-2 rounded-md font-semibold"
-              : "px-3 py-2 text-gray-600 font-medium hover:text-[#E64A19]"
-          }
-        >
-          My Orders
-        </NavLink>
-      </li>
-      <li>
-        <NavLink
-          to={`/myFoods/${user?.email}`}
-          className={({ isActive }) =>
-            isActive
-              ? "text-white bg-[#FF5722] px-3 py-2 rounded-md font-semibold"
-              : "px-3 py-2 text-gray-600 font-medium hover:text-[#E64A19]"
-          }
-        >
-          My Foods
-        </NavLink>
-      </li>
+
+      {user?.email ? (
+        <>
+          <li>
+            <NavLink
+              to="/addFood"
+              className={({ isActive }) =>
+                isActive
+                  ? "text-white bg-[#FF5722] px-3 py-2 rounded-md font-semibold"
+                  : "px-3 py-2 text-gray-600 font-medium hover:text-[#E64A19]"
+              }
+            >
+              Add Food
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="/myorders"
+              className={({ isActive }) =>
+                isActive
+                  ? "text-white bg-[#FF5722] px-3 py-2 rounded-md font-semibold"
+                  : "px-3 py-2 text-gray-600 font-medium hover:text-[#E64A19]"
+              }
+            >
+              My Orders
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to={`/myFoods/${user?.email}`}
+              className={({ isActive }) =>
+                isActive
+                  ? "text-white bg-[#FF5722] px-3 py-2 rounded-md font-semibold"
+                  : "px-3 py-2 text-gray-600 font-medium hover:text-[#E64A19]"
+              }
+            >
+              My Foods
+            </NavLink>
+          </li>
+        </>
+      ) : (
+        ""
+      )}
     </>
   );
 
