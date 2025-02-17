@@ -83,7 +83,7 @@
 - **Moment.js** (for date formatting)
 - **React Router** (for navigation)
 
-- **TanStack Query** (for API data fetching)
+
 
 ---
 
